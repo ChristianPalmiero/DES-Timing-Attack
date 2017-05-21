@@ -78,6 +78,10 @@ The second field is the timing measurement.
 
 ### Attack phase
 
+```bash
+$ ./ta.py ta.dat 10000
+```
+
 The timing attack tries to retrieve the real last round key, that can be found out by looking at the `ta.key` file for verification purposes.
 The timing attack:
 * filters the input timing measurements;
@@ -85,7 +89,7 @@ The timing attack:
 * computes an average of the time taken by the execution of a single Sbox within one DES round;
 * computes 6 bits of the last round key, exploiting 64 possible combinations at a time;
 * builds a timing model for each sample: the timing model takes into account the time taken by the execution of the previous 15 rounds, the time taken by the execution of the previously computed Sboxes and the remaining Sboxes, a timing factor that depends on the Hamming weight of the input of the P permutation;
-* computes the PCC between X, a random variable representing the real input timing measurements, and Y, a random variable representing the estimated timing measurements for each of the 64 combinations of the key;
+* computes 64 PCCs between X, a random variable representing the real input timing measurements, and Yj, a random variable representing the estimated timing measurements for each of the 64 combinations of the key;
 * gets the maximum PCC and tries to guess 6 bits of the last round key at a time.
 
 All printed messages are sent to the standard error (`stderr`). The only message that is sent to the standard output (`stdout`) is the 48-bits last round key, in hexadecimal form.
