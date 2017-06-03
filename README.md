@@ -53,7 +53,7 @@ Last round key (hex):
 ```
 
 This randomly draws a 64-bits DES secret key and 100000 random 64-bits plaintexts, and enciphers them using the flawed DES software implementation. Each enciphering is accurately timed using the hardware timer. Two files are generated:
-* `ta.key` containing the 64-bits DES secret key, its 56-bits version (without the parity bits), the 16 corresponding 48-bits round keys and, for each round key, the eight 6-bits subkeys.
+* `ta.key` containing the 64-bits DES secret key, its 56-bits version (without the parity bits), the 16 corresponding 48-bits round keys and, for each round key, the eight 6-bits subkeys;
 * `ta.dat` containing the 100000 ciphertexts and timing measurements.
 
 Note: the 48-bits last round key is printed on the standard output (`stdout`), all other printed messages are sent to the standard error (`stderr`).
@@ -92,8 +92,8 @@ The timing attack:
 * computes 64 PCCs between X, a random variable representing the real input timing measurements, and Yj, a random variable representing the estimated timing measurements for each of the 64 combinations of the key;
 * gets the maximum PCC and tries to guess 6 bits of the last round key at a time.
 
-All printed messages are sent to the standard error (`stderr`). The only message that is sent to the standard output (`stdout`) is the 48-bits last round key, in hexadecimal form.
+All printed messages are sent to the standard error (`stderr`). The only message that is sent to the standard output (`stdout`) is the 48-bit last round key, in hexadecimal form.
 
 ### Results
 
-My attack succeeds with at least 3261 acquisitions.
+My timing attack succeeds with at least 3261 acquisitions.
